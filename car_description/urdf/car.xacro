@@ -1,0 +1,176 @@
+<?xml version="1.0" ?>
+<robot name="car" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find car_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find car_description)/urdf/car.trans" />
+<xacro:include filename="$(find car_description)/urdf/car.gazebo" />
+<link name="base_link">
+  <inertial>
+    <origin xyz="4.771085471542193e-10 -0.0006822110356098182 0.02021714330433763" rpy="0 0 0"/>
+    <mass value="0.9822687822052116"/>
+    <inertia ixx="0.006331" iyy="0.00181" izz="0.00788" ixy="-0.0" iyz="-2.1e-05" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find car_description)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find car_description)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="left_wheel_1">
+  <inertial>
+    <origin xyz="-0.007500000000000007 1.49003268057335e-10 1.3877787807814457e-17" rpy="0 0 0"/>
+    <mass value="0.040375748783935995"/>
+    <inertia ixx="3.3e-05" iyy="1.7e-05" izz="1.7e-05" ixy="0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.0775 0.07 -0.02" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find car_description)/meshes/left_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.0775 0.07 -0.02" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find car_description)/meshes/left_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="right_wheel_1">
+  <inertial>
+    <origin xyz="0.007499999999999979 1.490032958129106e-10 3.8163916471489756e-17" rpy="0 0 0"/>
+    <mass value="0.040375748783935995"/>
+    <inertia ixx="3.3e-05" iyy="1.7e-05" izz="1.7e-05" ixy="-0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.0775 0.07 -0.02" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find car_description)/meshes/right_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.0775 0.07 -0.02" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find car_description)/meshes/right_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="caster_1">
+  <inertial>
+    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+    <mass value="0.018229614971230372"/>
+    <inertia ixx="3e-06" iyy="3e-06" izz="3e-06" ixy="-0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.0 -0.1 -0.0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find car_description)/meshes/caster_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.0 -0.1 -0.0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find car_description)/meshes/caster_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="lidar_1">
+  <inertial>
+    <origin xyz="-3.769546289141941e-18 1.3877787807814457e-17 0.015" rpy="0 0 0"/>
+    <mass value="0.03996105855366222"/>
+    <inertia ixx="7e-06" iyy="7e-06" izz="8e-06" ixy="-0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.0 -0.1 -0.045" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find car_description)/meshes/lidar_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.0 -0.1 -0.045" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find car_description)/meshes/lidar_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="Revolute 4" type="continuous">
+  <origin xyz="-0.0775 -0.07 0.02" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="left_wheel_1"/>
+  <axis xyz="-1.0 0.0 0.0"/>
+</joint>
+
+<joint name="Revolute 5" type="continuous">
+  <origin xyz="0.0775 -0.07 0.02" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="right_wheel_1"/>
+  <axis xyz="-1.0 0.0 0.0"/>
+</joint>
+
+<joint name="Revolute 6" type="continuous">
+  <origin xyz="0.0 0.1 0.0" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="caster_1"/>
+  <axis xyz="-1.0 0.0 0.0"/>
+</joint>
+
+<joint name="Rigid 7" type="fixed">
+  <origin xyz="0.0 0.1 0.045" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="lidar_1"/>
+</joint>
+
+<!--http://wiki.ros.org/simulator_gazebo/Tutorials/ListOfMaterials-->
+<gazebo reference="base_link">
+  <material>Gazebo/WhiteGlow</material>
+</gazebo>
+<gazebo reference="left_wheel_1">
+  <material>Gazebo/SkyBlue</material>
+</gazebo>
+<gazebo reference="right_wheel_1">
+  <material>Gazebo/SkyBlue </material>
+</gazebo>
+<gazebo reference="caster_1">
+  <material>Gazebo/Grey</material>
+</gazebo>
+<gazebo reference="lidar_1">
+  <material>Gazebo/Blue</material>
+</gazebo>
+
+
+<gazebo>
+  <plugin filename="libgazebo_ros_diff_drive.so" name="gazebo_base_controller">
+    <odometry_frame>odom</odometry_frame>
+    <commandTopic>cmd_vel</commandTopic>
+    <publish_odom>true</publish_odom>
+    <publish_odom_tf>true</publish_odom_tf>
+    <update_rate>15.0</update_rate>
+
+    <left_joint>Revolute 4</left_joint>
+    <right_joint>Revolute 5</right_joint>
+    
+    <wheel_separation>0.155</wheel_separation>
+    <wheel_diameter>0.08</wheel_diameter>
+    <max_wheel_acceleration>0.5</max_wheel_acceleration>
+    <max_wheel_torque>8</max_wheel_torque>
+    <robotBaseFrame>base_link</robotBaseFrame>
+  </plugin>
+</gazebo>
+
+</robot>
