@@ -10,8 +10,8 @@ import xacro
 
 def generate_launch_description():
    
-    urdf_file = '/home/swaraj/ros2_lab/src/manipulator/urdf/arm.urdf'    
-    controller_file = '/home/swaraj/ros2_lab/src/manipulator/config/control.yaml'
+    urdf_file = '/home/project/ROS2/src/manipulator/urdf/arm.urdf'    
+    controller_file = '/home/project/ROS2/src/manipulator/config/control.yaml'
     robot_description = {"robot_description": urdf_file}
 
     gazebo = IncludeLaunchDescription(
