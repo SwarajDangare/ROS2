@@ -4,7 +4,7 @@ from launch.actions import ExecuteProcess
 from launch_ros.actions import Node
 
 def generate_launch_description():
-    urdf_file = '/home/swaraj/ros2_lab/src/manipulator/urdf/arm.urdf'
+    urdf_file = '/home/project/ROS2/src/manipulator/urdf/arm.urdf'
 
     return LaunchDescription(
         [
@@ -15,7 +15,7 @@ def generate_launch_description():
             Node(
                 package="gazebo_ros",
                 executable="spawn_entity.py",
-                arguments=["-entity","urdf_tutorial","-b","-file", urdf_file],
+                arguments=["-entity","manipulator","-b","-file", urdf_file],
             ),
             Node(
                 package="robot_state_publisher",
