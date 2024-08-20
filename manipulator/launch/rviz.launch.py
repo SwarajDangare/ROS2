@@ -5,7 +5,7 @@ from launch_ros.actions import Node
 
 def generate_launch_description():
     
-    urdf_file = urdf = '/home/swaraj/ros2_lab/src/manipulator/urdf/arm.urdf'
+    urdf_file = urdf = '/home/project/ROS2/src/manipulator/urdf/arm.urdf'
 
     joint_state_publisher_node = Node(
         package="joint_state_publisher_gui",
